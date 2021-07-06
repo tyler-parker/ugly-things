@@ -5,27 +5,31 @@ import {
   Text,
   Link,
   VStack,
-  Code,
+  Divider,
   Grid,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
 
 
 import Navbar from './components/Header';
+import Form from './components/Form'
+import Card from './components/Card'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
       <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <VStack spacing={8}>
-            {/* <Logo h="40vmin" pointerEvents="none" /> */}
+
+          <VStack spacing={10} margin={10}>
+            <Form />
+            <Card />
           </VStack>
-        </Grid>
+
       </Box>
+      <Divider />
+      <Footer />
     </ChakraProvider>
   );
 }
