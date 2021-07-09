@@ -59,18 +59,18 @@ export default function Form() {
                     </Flex>
                     <HStack align='center' justifyContent='center'>
                         <Button 
-                        onSubmit={context.handleSubmit} 
+                        onClick={context.handleSubmit} 
                         colorScheme='teal' 
                         size='lg'
-                        onClick={() =>
-                            toast({
-                              title: "Ugly Thing Submitted",
-                              description: "Wow. There it is. Truly an abomination.",
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            })
-                          }
+                        // onClick={() =>
+                        //     toast({
+                        //       title: "Ugly Thing Submitted",
+                        //       description: "Wow. There it is. Truly an abomination.",
+                        //       status: "success",
+                        //       duration: 9000,
+                        //       isClosable: true,
+                        //     })
+                        //   }
                         >
                             Submit
                         </Button>

@@ -13,20 +13,21 @@ import {
 
 import Navbar from './components/Header';
 import Form from './components/Form'
-import Card from './components/Card'
 import Footer from './components/Footer'
+import { UglyThings } from './context/UglyThings';
+
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
       <Box textAlign="center" fontSize="xl">
-
           <VStack spacing={10} margin={10}>
             <Form />
-            <Card />
+            <Grid templateColumns='repeat(3, 1fr)' gap={10}>
+              <UglyThings />
+            </Grid>
           </VStack>
-
       </Box>
       <Divider />
       <Footer />
