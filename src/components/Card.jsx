@@ -3,38 +3,54 @@ import {
     Box,
     Image,
     Text,
-    Stack,
-    Button
+    VStack,
+    Button,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
 
 } from '@chakra-ui/react'
 import { UglyThingsContextConsumer } from '../context/UglyThingsContext'
 
-const uglySponge = 'https://i2.wp.com/bloody-disgusting.com/wp-content/uploads/2017/06/spopng8.jpg?resize=677%2C846'
-
-
 export function Card (props) {
     return (
             <Box
-                maxW="sm" 
+                maxW="xs" 
                 borderWidth="1px" 
                 borderRadius="lg" 
                 overflow="hidden" 
                 boxShadow='lg'
+                
             >
                 <Image 
                     alt='ugly thing' 
                     src={props.item.imgUrl} 
-                    boxSize='sm'
+                    boxSize='xs'
                 />
-                <Box p={5} d='flex'>
-                    <Stack alignItems='left' textAlign='left'>
-                        <Text mt='1' >{props.item.title} </Text>
-                        <Text mt='1' fontSize='sm'>{props.item.description}</Text>
-                    </Stack>
-                    <UglyThingsContextConsumer>
-                        {context => <Button onClick={context.handleDelete}>Delete</Button>}
-                    </UglyThingsContextConsumer>
+                <Box p={5} >
+                    <VStack alignItems='left' textAlign='left'>
+                        <Text mt='1' isTruncated >{props.item.title} </Text>
+                        <Popover>
+                            <PopoverTrigger >
+                               
+                                    <Text mt='1' noOfLines={1}  fontSize='sm'>{props.item.description}</Text>
+                            </PopoverTrigger>
+                            <PopoverContent>
+                            <PopoverArrow />
+                            <PopoverCloseButton />
+                            <PopoverHeader>Description</PopoverHeader>
+                            <PopoverBody><Text mt='1' fontSize='sm'>{props.item.description}</Text></PopoverBody>
+                        </PopoverContent>
+                        </Popover>
+                    </VStack>
                 </Box>
+                        <UglyThingsContextConsumer>
+                            {context => <Button colorScheme="red" m={1} size="lg" onClick={context.handleDelete}>Delete</Button>}
+                        </UglyThingsContextConsumer>
             </Box>
     )
 }

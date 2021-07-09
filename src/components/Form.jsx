@@ -40,8 +40,8 @@ export default function Form() {
                                 />
                                 <Input 
                                     type='url' 
-                                    name='imgURL'
-                                    value={context.imgURL}
+                                    name='imgUrl'
+                                    value={context.imgUrl}
                                     onChange={context.handleChange}  
                                     placeholder="Img URL" 
                                     aria-label='image URL' 

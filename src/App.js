@@ -6,7 +6,7 @@ import {
   Link,
   VStack,
   Divider,
-  Grid,
+  SimpleGrid,
   theme,
 } from '@chakra-ui/react';
 
@@ -24,9 +24,9 @@ function App() {
       <Box textAlign="center" fontSize="xl">
           <VStack spacing={10} margin={10}>
             <Form />
-            <Grid templateColumns='repeat(3, 1fr)' gap={10}>
+            <SimpleGrid columns={{sm: 1, md: 2, lg: 3, "2xl": 4}}  gap={10}>
               <UglyThings />
-            </Grid>
+            </SimpleGrid>
           </VStack>
       </Box>
       <Divider />
