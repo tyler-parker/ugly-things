@@ -11,12 +11,17 @@ class UglyThingsContext extends Component {
         imgUrl: ""
     }
 
-    componentDidMount() {
+    getUglyThings() {
         axios.get("https://api.vschool.io/tyler-parker/thing")
         .then(res => res)
         .then(res => {
             this.setState({uglyThingsArr: [...res.data],})
         })
+    }
+
+    componentDidMount() {
+       return this.getUglyThings()
+
     }
 
     handleChange = (e) => {
@@ -36,14 +41,17 @@ class UglyThingsContext extends Component {
             .catch(res => console.log(res.data))
     }
 
-    handleEdit = (e) => {
-
+    handleEdit = (id) => {
+        const editThing = this.state?this.state.uglyThingsArr.find(thing => thing.data._id === id):null;
+        axios.put("https://api.vschool.io/tyler-parker/thing", editThing)
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
     }
 
     handleDelete(id) {
-        const deletedThing = this.state.uglyThingsArr.find(thing => thing.data._id === id);
-        axios.delete("https://api.vschool.io/tyler-parker/thing", deletedThing)
-            .then(res => console.log(res))
+        return axios.delete("https://api.vschool.io/tyler-parker/thing/" + id)
+            .then(res => this.getUglyThings())
+            // .then(res => Window.reload())
             .catch(res => console.log(res))
     }
     
@@ -54,7 +62,6 @@ class UglyThingsContext extends Component {
                 title: this.state.title,
                 description: this.state.description,
                 imgUrl: this.state.imgUrl,
-                id: this.state.id,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete

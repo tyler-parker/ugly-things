@@ -8,13 +8,15 @@ export function UglyThings() {
             <UglyThingsContextConsumer>
                 {
                     ({uglyThingsArr}) => {
-                        const submittedUglyThings = uglyThingsArr.map((item, index) => <Card 
+                        const submittedUglyThings = uglyThingsArr.map((item, index) => 
+                        <Card 
                         key={index} 
                         item={item}
                         id={item._id} 
-                        />)
+                        />
+                    )
                         return submittedUglyThings
-                    }
+                    }    
                 }
             </UglyThingsContextConsumer>
         </>

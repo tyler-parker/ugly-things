@@ -15,7 +15,10 @@ import {
     HStack,
 
 } from '@chakra-ui/react'
+
 import { UglyThingsContextConsumer } from '../context/UglyThingsContext'
+
+import EditModal from './EditModal'
 
 export function Card (props) {
     return (
@@ -52,19 +55,12 @@ export function Card (props) {
                         <UglyThingsContextConsumer>
                             {context => 
                                 <HStack p={2}>
-                                    <Button
-                                    m={1} 
-                                    size="lg" 
-                                    onClick={context.handleEdit}
-                                    >
-                                    Edit
-                                    </Button>
-                                    
+                                    <EditModal />
                                     <Button 
                                     colorScheme="red" 
                                     m={1} 
                                     size="lg" 
-                                    onClick={context.handleDelete(props._id)}
+                                    onClick={() => context.handleDelete(props.id)}
                                     >Delete
                                     </Button>
                                 </HStack>
