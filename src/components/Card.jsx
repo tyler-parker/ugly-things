@@ -12,6 +12,7 @@ import {
     PopoverBody,
     PopoverArrow,
     PopoverCloseButton,
+    HStack,
 
 } from '@chakra-ui/react'
 import { UglyThingsContextConsumer } from '../context/UglyThingsContext'
@@ -49,7 +50,25 @@ export function Card (props) {
                     </VStack>
                 </Box>
                         <UglyThingsContextConsumer>
-                            {context => <Button colorScheme="red" m={1} size="lg" onClick={context.handleDelete}>Delete</Button>}
+                            {context => 
+                                <HStack p={2}>
+                                    <Button
+                                    m={1} 
+                                    size="lg" 
+                                    onClick={context.handleEdit}
+                                    >
+                                    Edit
+                                    </Button>
+                                    
+                                    <Button 
+                                    colorScheme="red" 
+                                    m={1} 
+                                    size="lg" 
+                                    onClick={context.handleDelete}
+                                    >Delete
+                                    </Button>
+                                </HStack>
+                            }
                         </UglyThingsContextConsumer>
             </Box>
     )

@@ -3,7 +3,7 @@ import axios from 'axios'
 const {Provider, Consumer} = React.createContext()
 
 class UglyThingsContext extends Component {
-
+  
     state = {
         uglyThingsArr: [],
         title: "",
@@ -38,14 +38,16 @@ class UglyThingsContext extends Component {
         axios.post("https://api.vschool.io/tyler-parker/thing", newThing)
             .then(res => console.log(res.data))
             .catch(res => console.log(res.data))
-        // this.setState(prevState => ({
-        //     uglyThingsArr:  [newThing, ...prevState.uglyThingsArr]
-        // }))
+    }
+
+    handleEdit = (e) => {
+
     }
 
     handleDelete(id) {
-        const deletedThing = this.state.uglyThingsArr.filter(thing => thing.data._id !== id);
-        
+        const deletedThing = this.state.uglyThingsArr.find(thing => thing.data._id !== id);
+        axios.delete("https://api.vschool.io/tyler-parker/thing", deletedThing)
+            .then(res => console.log(res))
     }
     
     render(){
