@@ -64,7 +64,7 @@ export function Card (props) {
                                     colorScheme="red" 
                                     m={1} 
                                     size="lg" 
-                                    onClick={context.handleDelete}
+                                    onClick={context.handleDelete(props._id)}
                                     >Delete
                                     </Button>
                                 </HStack>

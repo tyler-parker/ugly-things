@@ -15,11 +15,7 @@ class UglyThingsContext extends Component {
         axios.get("https://api.vschool.io/tyler-parker/thing")
         .then(res => res)
         .then(res => {
-            this.setState(
-                {
-                    uglyThingsArr: [...res.data],
-                }
-            )
+            this.setState({uglyThingsArr: [...res.data],})
         })
     }
 
@@ -45,9 +41,10 @@ class UglyThingsContext extends Component {
     }
 
     handleDelete(id) {
-        const deletedThing = this.state.uglyThingsArr.find(thing => thing.data._id !== id);
+        const deletedThing = this.state.uglyThingsArr.find(thing => thing.data._id === id);
         axios.delete("https://api.vschool.io/tyler-parker/thing", deletedThing)
             .then(res => console.log(res))
+            .catch(res => console.log(res))
     }
     
     render(){

@@ -10,10 +10,8 @@ export function UglyThings() {
                     ({uglyThingsArr}) => {
                         const submittedUglyThings = uglyThingsArr.map((item, index) => <Card 
                         key={index} 
-                        item={item} 
-                        // imgURL={item.imgURL} 
-                        // title={item.title} 
-                        // description={item.description} 
+                        item={item}
+                        id={item._id} 
                         />)
                         return submittedUglyThings
                     }
