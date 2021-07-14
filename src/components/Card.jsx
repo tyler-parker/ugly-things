@@ -22,19 +22,19 @@ import EditModal from './EditModal'
 
 export function Card (props) {
     return (
-            <Box
-                maxW="xs" 
-                borderWidth="1px" 
-                borderRadius="lg" 
-                overflow="hidden" 
-                boxShadow='lg'
-                
-            >
+        <Box
+        maxW="xs" 
+        borderWidth="1px" 
+        borderRadius="lg" 
+        overflow="hidden" 
+        boxShadow='lg'
+        
+        >
                 <Image 
                     alt='ugly thing' 
                     src={props.item.imgUrl} 
                     boxSize='xs'
-                />
+                    />
                 <Box p={5} >
                     <VStack alignItems='left' textAlign='left'>
                         <Text mt='1' isTruncated >{props.item.title} </Text>
@@ -55,14 +55,15 @@ export function Card (props) {
                         <UglyThingsContextConsumer>
                             {context => 
                                 <HStack p={2}>
-                                    <EditModal />
+                                    <EditModal id={props.item._id}/>
                                     <Button 
                                     colorScheme="red" 
                                     m={1} 
                                     size="lg" 
-                                    onClick={() => context.handleDelete(props.id)}
+                                    onClick={() => context.handleDelete(props.item._id)}
                                     >Delete
                                     </Button>
+                                    {console.log(props.item._id)}
                                 </HStack>
                             }
                         </UglyThingsContextConsumer>

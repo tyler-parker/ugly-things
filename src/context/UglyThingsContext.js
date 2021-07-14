@@ -41,17 +41,16 @@ class UglyThingsContext extends Component {
             .catch(res => console.log(res.data))
     }
 
-    handleEdit = (id) => {
-        const editThing = this.state?this.state.uglyThingsArr.find(thing => thing.data._id === id):null;
-        axios.put("https://api.vschool.io/tyler-parker/thing", editThing)
-            .then(res => console.log(res))
+    handleEdit = (editThing, id) => {
+        // const editThing = this.state?this.state.uglyThingsArr.find(thing => thing.data._id === id):null;
+        axios.put(`https://api.vschool.io/tyler-parker/thing/${id}`, editThing)
+            .then(res => console.log(id))
             .catch(res => console.log(res))
     }
 
     handleDelete(id) {
         return axios.delete("https://api.vschool.io/tyler-parker/thing/" + id)
             .then(res => this.getUglyThings())
-            // .then(res => Window.reload())
             .catch(res => console.log(res))
     }
     

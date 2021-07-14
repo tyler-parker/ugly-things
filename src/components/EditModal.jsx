@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -18,12 +19,22 @@ import {
   } from "@chakra-ui/react"
   import { UglyThingsContextConsumer } from "../context/UglyThingsContext"
 
-export default function EditModal() {
+export default function EditModal(props) {
+    const [inputData, setInputData] = useState({
+      title: "",
+      description: "",
+      imgUrl: ""
+    })
+
+    function handleChange(event) {
+      const {name, value} = event.target
+      setInputData(prevInputData => ({...prevInputData, [name]: value}))
+  }
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <>
         <Button size='lg' onClick={onOpen}>Edit</Button>
-  
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
@@ -43,24 +54,24 @@ export default function EditModal() {
                                 <Input 
                                     type='text' 
                                     name='title'
-                                    value={context.title}
-                                    onChange={context.handleChange} 
+                                    value={inputData.title}
+                                    onChange={handleChange} 
                                     placeholder="Title" 
                                     aria-label='title'
                                 />
                                 <Input 
                                     type='url' 
                                     name='imgUrl'
-                                    value={context.imgUrl}
-                                    onChange={context.handleChange}  
+                                    value={inputData.imgUrl}
+                                    onChange={handleChange}  
                                     placeholder="Img URL" 
                                     aria-label='image URL' 
                                 />
                                 <Textarea 
                                     type='text' 
                                     name='description'
-                                    value={context.description}
-                                    onChange={context.handleChange}  
+                                    value={inputData.description}
+                                    onChange={handleChange}  
                                     placeholder="Description" 
                                     aria-label='description' 
                                 />
@@ -69,11 +80,11 @@ export default function EditModal() {
                     </Flex>
                     <HStack align='center' justifyContent='center'>
                         <Button 
-                        onSubmit={context.handleEdit} 
+                        onClick={() => context.handleEdit(inputData, props.id)} 
                         colorScheme='teal' 
                         size='lg'
                         m={2}
-                        onClick={onClose}
+                        
                         >
                             Submit
                         </Button>
