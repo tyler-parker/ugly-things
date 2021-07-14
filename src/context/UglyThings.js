@@ -8,11 +8,10 @@ export function UglyThings() {
             <UglyThingsContextConsumer>
                 {
                     ({uglyThingsArr}) => {
-                        const submittedUglyThings = uglyThingsArr.map((item, index) => 
+                        const submittedUglyThings = uglyThingsArr.map((item) => 
                         <Card 
-                        key={index} 
+                        key={item._id} 
                         item={item}
-                        id={item._id} 
                         />
                     )
                         return submittedUglyThings

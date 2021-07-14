@@ -64,7 +64,8 @@ class UglyThingsContext extends Component {
                 imgUrl: this.state.imgUrl,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
-                handleDelete: this.handleDelete
+                handleDelete: this.handleDelete,
+                handleEdit: this.handleEdit
             }}>
                 {this.props.children}
             </Provider>

@@ -12,7 +12,7 @@ export function FooterContent() {
                 <IconButton 
                 as="a" 
                 href="https://reactjs.org/" 
-                aria-label="Twitter"
+                aria-label="React Documentation"
                 color={useColorModeValue('gray.600', 'teal')} 
                 icon={<FaReact fontSize="20px" />} />
             </ButtonGroup>
