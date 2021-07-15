@@ -80,7 +80,7 @@ export function Card (props) {
                             >Delete
                             </Button>
 
-                            {console.log(props.item._id)}
+                            {/* {console.log(props.item._id)} */}
                         </HStack>
                     }
                 </UglyThingsContextConsumer>

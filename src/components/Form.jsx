@@ -11,6 +11,8 @@ import {
     useToast
 } from '@chakra-ui/react'
 
+import Toast from './Toast'
+
 import { UglyThingsContextConsumer } from '../context/UglyThingsContext'
 
 export default function Form() {
@@ -28,6 +30,7 @@ export default function Form() {
                 p={8} 
             >
                 <Heading>Submit Your Ugly Thing</Heading>
+                <form>
                     <Flex justifyItems='center' p='10px'>
                         <Stack spacing={3} w='20em'>
                                 <Input 
@@ -59,13 +62,14 @@ export default function Form() {
                     </Flex>
                     <HStack align='center' justifyContent='center'>
                         <Button 
-                        onClick={context.handleSubmit} 
+                        onSubmit={context.handleSubmit} 
                         colorScheme='teal' 
                         size='lg'
                         >
                             Submit
                         </Button>
                     </HStack>
+                </form>
             </Box>
             }
         </UglyThingsContextConsumer>    

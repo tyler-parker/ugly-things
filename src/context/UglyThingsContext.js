@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 const {Provider, Consumer} = React.createContext()
-
 class UglyThingsContext extends Component {
   
     state = {
@@ -11,17 +10,12 @@ class UglyThingsContext extends Component {
         imgUrl: ""
     }
 
-    getUglyThings() {
+    componentDidMount() {
         axios.get("https://api.vschool.io/tyler-parker/thing")
         .then(res => res)
         .then(res => {
             this.setState({uglyThingsArr: [...res.data],})
         })
-    }
-
-    componentDidMount() {
-       return this.getUglyThings()
-
     }
 
     handleChange = (e) => {
@@ -37,28 +31,27 @@ class UglyThingsContext extends Component {
             imgUrl: this.state.imgUrl
         }
         axios.post("https://api.vschool.io/tyler-parker/thing", newThing)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                this.setState(prevState =>  ({uglyThingsArr: [...prevState.uglyThingsArr, res.data]}))
+            })
             .catch(res => console.log(res.data))
     }
 
     handleEdit = (editThing, id) => {
-        // const editThing = this.state?this.state.uglyThingsArr.find(thing => thing.data._id === id):null;
         axios.put(`https://api.vschool.io/tyler-parker/thing/${id}`, editThing)
-        .then(res => console.log(id))
+        .then(res => {
+            console.log(id)
+            this.setState(prevState => ({uglyThingsArr: [...prevState.uglyThingsArr, editThing]}))
+        })
         .catch(res => console.log(res))
     }
-    
-    handleDelete(id) {
+
+    handleDelete = id => {
         return axios.delete("https://api.vschool.io/tyler-parker/thing/" + id)
-        .then(res => this.getUglyThings())
+        .then(res => this.setState(prevState => ({uglyThingsArr: prevState.uglyThingsArr.filter(thing => thing._id !== id)})))
         .catch(res => console.log(res))
     }
-    
-    // componentDidUpdate(prevProps, prevState){
-    //     if(prevState.uglyThingsArr !== this.state.uglyThingsArr.length){
-    //         this.getUglyThings()
-    //     }
-    // }
 
     render(){
         return(
