@@ -1,4 +1,4 @@
-import { Box, Stack, Heading, useColorModeValue, HStack, IconButton, ButtonGroup } from '@chakra-ui/react'
+import { Box, Stack, HStack } from '@chakra-ui/react'
 import * as React from 'react'
 import { SocialMediaLinks } from './SocialMediaLinks'
 import { FooterContent } from './FooterContent'

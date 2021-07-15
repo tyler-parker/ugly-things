@@ -13,14 +13,11 @@ import {
     PopoverArrow,
     PopoverCloseButton,
     HStack,
-
 } from '@chakra-ui/react'
 
 import { UglyThingsContextConsumer } from '../context/UglyThingsContext'
 
-import EditModal from './EditModal'
-
-export function Card (props) {
+export function ModalPreview (props) {
     return (
         <Box
         maxW="xs" 
@@ -32,12 +29,12 @@ export function Card (props) {
         >
                 <Image 
                     alt='ugly thing' 
-                    src={props.item.imgUrl} 
+                    src={props.imgUrl} 
                     boxSize='xs'
                     />
                 <Box p={5} >
                     <VStack alignItems='left' textAlign='left'>
-                        <Text mt='1' isTruncated >{props.item.title} </Text>
+                        <Text mt='1' isTruncated >{props.title} </Text>
                         <Popover >
                             <PopoverTrigger  >
                             {/* <Box children="Click"> */}
@@ -47,7 +44,7 @@ export function Card (props) {
                                 noOfLines={1}  
                                 fontSize='sm' 
                                 children="click">
-                                    {props.item.description}
+                                    {props.description}
                                 </Text>
                             {/* </Box>     */}
 
@@ -58,7 +55,7 @@ export function Card (props) {
                             <PopoverHeader>Description</PopoverHeader>
                             <PopoverBody><Text 
                             mt='1' 
-                            fontSize='sm'>{props.item.description}</Text></PopoverBody>
+                            fontSize='sm'>{props.description}</Text></PopoverBody>
                         </PopoverContent>
                         </Popover>
                     </VStack>
@@ -66,21 +63,15 @@ export function Card (props) {
                 <UglyThingsContextConsumer>
                     {context => 
                         <HStack p={2}>
-                            <EditModal 
-                            id={props.item._id} 
-                            title={props.item.title} 
-                            imgUrl={props.item.imgUrl} 
-                            description={props.item.description}/>
-
                             <Button 
                             colorScheme="red" 
                             m={1} 
                             size="lg" 
-                            onClick={() => context.handleDelete(props.item._id)}
+                            onClick={() => context.handleDelete(props._id)}
                             >Delete
                             </Button>
 
-                            {console.log(props.item._id)}
+                            {console.log(props._id)}
                         </HStack>
                     }
                 </UglyThingsContextConsumer>

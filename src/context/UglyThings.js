@@ -9,10 +9,10 @@ export function UglyThings() {
                 {
                     ({uglyThingsArr}) => {
                         const submittedUglyThings = uglyThingsArr.map((item) => 
-                        <Card 
-                        key={item._id} 
-                        item={item}
-                        />
+                            <Card 
+                            key={item._id} 
+                            item={item}
+                            />
                     )
                         return submittedUglyThings
                     }    

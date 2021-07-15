@@ -4,9 +4,9 @@ import { FaReact } from 'react-icons/fa'
 
 export function FooterContent() {
     return (
-        <HStack >
+        <HStack>
             <Heading size='md' color={useColorModeValue('teal', 'white')}>
-                        Made By Tyler Parker
+                        Made By <a href='https://www.linkedin.com/in/tylerparkerdev/'>Tyler Parker</a>
             </Heading>
             <ButtonGroup variant="ghost" color="gray.600">
                 <IconButton 

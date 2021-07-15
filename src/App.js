@@ -2,8 +2,6 @@ import React from 'react';
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
   VStack,
   Divider,
   SimpleGrid,
