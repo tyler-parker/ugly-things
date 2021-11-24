@@ -15,7 +15,7 @@ export function HeaderContent() {
         <>
             <Flex align="center" mr={5}>  
                     <Heading as="h1" size="xl" letterSpacing={"-.1rem"} p='15px'>  
-                        Made with Chakra  
+                        Ugly Things  
                     </Heading>
                     <Link href='https://chakra-ui.com/' isExternal>
                         <Logo h="4vmin" pointerEvents="none" />  

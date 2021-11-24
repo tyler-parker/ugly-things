@@ -8,7 +8,7 @@ export function UglyThings() {
             <UglyThingsContextConsumer>
                 {
                     ({uglyThingsArr}) => {
-                        const submittedUglyThings = uglyThingsArr.map((item) => 
+                        const submittedUglyThings = uglyThingsArr.map( item => 
                             <Card 
                             key={item._id} 
                             item={item}

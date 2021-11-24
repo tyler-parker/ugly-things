@@ -12,10 +12,10 @@ class UglyThingsContext extends Component {
 
     componentDidMount() {
         axios.get("https://api.vschool.io/tyler-parker/thing")
-        .then(res => res)
-        .then(res => {
-            this.setState({uglyThingsArr: [...res.data],})
-        })
+            .then(res => res)
+            .then(res => {
+                this.setState({uglyThingsArr: [...res.data],})
+            })
     }
 
     handleChange = (e) => {
@@ -40,17 +40,17 @@ class UglyThingsContext extends Component {
 
     handleEdit = (editThing, id) => {
         axios.put(`https://api.vschool.io/tyler-parker/thing/${id}`, editThing)
-        .then(res => {
-            console.log(id)
-            this.setState(prevState => ({uglyThingsArr: [...prevState.uglyThingsArr, editThing]}))
-        })
-        .catch(res => console.log(res))
+            .then(res => {
+                console.log(id)
+                this.setState(prevState => ({uglyThingsArr: [...prevState.uglyThingsArr, editThing]}))
+            })
+            .catch(res => console.log(res))
     }
 
     handleDelete = id => {
         return axios.delete("https://api.vschool.io/tyler-parker/thing/" + id)
-        .then(res => this.setState(prevState => ({uglyThingsArr: prevState.uglyThingsArr.filter(thing => thing._id !== id)})))
-        .catch(res => console.log(res))
+            .then(res => this.setState(prevState => ({uglyThingsArr: prevState.uglyThingsArr.filter(thing => thing._id !== id)})))
+            .catch(res => console.log(res))
     }
 
     render(){
